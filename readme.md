@@ -7,6 +7,8 @@ This provides OBS overlay of data from The Tracker Network
 
 ### LICENSE
 
+[Apache 2.0](https://github.com/camalot/obs-trackernetwork/blob/develop/LICENSE.md)
+
 Please add attribution to your Stream Information Section (if supported):
 
 > [OBS-TrackerNetwork](https://github.com/camalot/obs-trackernetwork) by [DarthMinos](https://www.twitch.tv/darthminos)
