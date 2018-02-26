@@ -170,6 +170,10 @@ router.get("/:platform/:username/:mode?", (req, res, next) => {
 	server
 		.stats(req.params.platform, req.params.username)
 		.then(body => {
+			if(!body || body.error){
+				return res.status(500).send(body.error || "Unknown Error");
+			}
+			console.log(body);
 			let mode = req.params.mode || "all";
 			if (mode === "all") {
 				let data = body[config.fortnite.MODES[mode]];

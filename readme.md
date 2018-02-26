@@ -6,8 +6,48 @@ This provides OBS overlay of data from The Tracker Network
 
 #### FORTNITE
 
-- /api/fortnite/{platform}/{epic-name}
+- /overlay/fortnite/{platform}/{epic-name}/[mode][?fields={field-list}]
 
+##### PLATFORMS
+
+- `pc` : PC
+- `xbl`: XBOX
+- `psn`: PLAYSTATION
+
+##### MODES
+
+- `all` : Displays `All Time` Stats (Default)
+- `solo`: Displays `Solo` Stats
+- `duo` : Displays `Duo` Stats
+- `squad`: Displays `Squad` Stats
+
+##### FIELDS
+
+This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
+- `all`
+	- `*` : SPECIAL ALL FIELDS (Default)
+	- `avgsurvivaltime` : Avg Survival Time
+	- `timeplayed` : Time Played
+	- `kpm` : Kills Per Min
+	- `kd` : Kill / Death Ratio
+	- `kills` : Total Kills
+	- `wins` : Total Wins
+	- `wins_` : Win Percentage
+	- `matches` : Matches Played
+	- `score` : Score (Tracker Network Score?)
+	- `top25_season` : Total Top 25 Current Season
+	- `top12_season` : Total Top 12 Current Season
+	- `top6_season` : Total Top 6 Current Season
+	- `top5_season` : Total Top 5 Current Season
+	- `top3_season` : Total Top 3 Current Season
+	- `top25` : Total Top 25
+	- `top12` : Total Top 12
+	- `top6` : Total Top 6
+	- `top5` : Total Top 5
+	- `top3` : Total Top 3
+- `solo`
+- `duo`
+- `squad`
 ### ENVIRONMENT VARIABLES
 
 #### FORTNITE
@@ -18,7 +58,14 @@ This provides OBS overlay of data from The Tracker Network
 
 ### RUN IN HEROKU
 
+- Click the `Deploy to Heroku` link below
+- Create a heroku account or login
+- Fill out the form with the information requested
+- Use the `herokuapp.com` url in OBS as a `Browser Source` using the endpoints above.
+
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
 
 ### RUN IN DOCKER
 

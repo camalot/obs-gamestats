@@ -36,6 +36,7 @@ class FortniteApi {
 					return resolve(body);
 				})
 				.catch((err) => {
+					console.err(err);
 					return reject(err);
 				});
 		});
