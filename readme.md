@@ -10,6 +10,8 @@ This provides OBS overlay of data from The Tracker Network
 
 - `/overlay/fortnite/{platform}/{epic-name}/[mode]?[fields={field-list}]`
 
+![Sample](https://i.imgur.com/7ROVfYY.png)
+
 ##### PLATFORMS
 
 - `pc` : PC
@@ -77,7 +79,7 @@ The conainer exposes port 3000. `-P` will map the port on the host.
 $ docker build --pull --tag camalot/obs-trackernetwork -f "./Dockerfile" .
 $ docker run -d -P \
 	--restart unless-stopped \
-	--name "obs-octoprint" \
+	--name "obs-trackernetwork" \
 	-e TN_FORTNITE_API_KEY="${TN_FORTNITE_API_KEY}" \
 	-e TN_FORTNITE_POLL_DELAY="${TN_FORTNITE_POLL_DELAY}" \
 	-t camalot/obs-trackernetwork
