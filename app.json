@@ -1,0 +1,22 @@
+{
+	"name": "obs-trackernetwork",
+	"description": "Endpoint for Tracker Network Game OBS Overlays",
+	"keywords": [
+		"obs",
+		"trackernetwork",
+		"overlay"
+	],
+	"repository": "https://github.com/camalot/obs-trackernetwork",
+	"env": {
+		"TN_FORTNITE_API_KEY": {
+			"description": "Tracker Network Fortnite API Key. See https://fortnitetracker.com/site-api for creating api key.",
+			"value": "",
+			"required": true
+		}
+	},
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	]
+}

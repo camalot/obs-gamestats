@@ -1,0 +1,26 @@
+
+{{#section 'head'}}
+{{/section}}
+
+<div class="overlay">
+	{{#each args}}
+	<input type="hidden" data-type="arg" value="{{this}}" name="{{@key}}" />
+	{{/each}}
+
+	<div id="overlay-labels" class="overlay-labels"></div>
+</div>
+
+<div data-template="label" class="hidden">
+	<h3 class="info">
+		<span class="mdl-color-text--blue-400 label" data-type="label"></span>
+		<span class="mdl-color-text--green-400 value" data-type="value"></span>
+	</h3>
+</div>
+
+<div data-template="progress" class="hidden">
+	<div class="mdl-progress mdl-js-progress"></div>
+</div>
+
+{{#section 'scripts'}}
+<script src="/assets/scripts/{{loader}}.js"></script>
+{{/section}}

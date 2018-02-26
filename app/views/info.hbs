@@ -1,0 +1,40 @@
+ {{#section 'head'}}
+<link rel="stylesheet" href="/assets/css/progress.css" /> {{/section}}
+
+
+<h3 class="info">
+	<span class="mdl-color-text--blue-400 label">State: </span>
+	<span id="print_state"></span>
+</h3>
+<h3 class="info file">
+	<span class="mdl-color-text--blue-400 label">File: </span>
+	<span id="print_file"></span>
+</h3>
+<h3 class="info">
+	<span class="mdl-color-text--blue-400 label">Elapsed Time: </span>
+	<span id="print_elapsed"></span>
+</h3>
+<h3 class="info">
+	<span class="mdl-color-text--blue-400 label">Remaining Time: </span>
+	<span id="print_remaining"></span>
+</h3>
+<h3 class="info">
+	<span class="mdl-color-text--blue-400 label">Hotend: </span>
+	<span class="mdl-color-text--green-400">
+		<span id="tool0_actual"></span>&deg;C</span>
+	<span class="mdl-color-text--blue-400">/</span>
+	<span class="mdl-color-text--red-400">
+		<span id="tool0_target"></span>&deg;C</span>
+</h3>
+<h3 class="info">
+	<span class="mdl-color-text--blue-400 label">Bed: </span>
+	<span class="mdl-color-text--green-400">
+		<span id="bed_actual"></span>&deg;C</span>
+	<span class="mdl-color-text--blue-400">/</span>
+	<span class="mdl-color-text--red-400">
+		<span id="bed_target"></span>&deg;C</span>
+</h3>
+
+
+{{#section 'head'}}
+<script src="/assets/scripts/info.js"></script> {{/section}}
