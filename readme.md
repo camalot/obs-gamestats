@@ -8,7 +8,7 @@ This provides OBS overlay of data from The Tracker Network
 
 #### FORTNITE
 
-- /overlay/fortnite/{platform}/{epic-name}/[mode][?fields={field-list}]
+- `/overlay/fortnite/{platform}/{epic-name}/[mode]?[fields={field-list}]`
 
 ##### PLATFORMS
 
