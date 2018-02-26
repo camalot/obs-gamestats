@@ -11,6 +11,7 @@ let _cleanField = s => {
 	return s
 		.replace(/[\s\/]/gi, "")
 		.replace(/%/i, "s_")
+		.replace(/\s?%/i, "_")
 		.replace(/(\d)s/i, "$1_season")
 		.toLowerCase();
 };
@@ -89,7 +90,7 @@ let _transformObjectStats = (input, fields) => {
 					}
 					if (
 						item.percentile &&
-						!_hasValue(added, fieldName) &&
+						!_hasValue(added, `${fieldName}_`) &&
 						!fieldName.endsWith("_") &&
 						(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
 					) {
@@ -173,7 +174,6 @@ router.get("/:platform/:username/:mode?", (req, res, next) => {
 			if(!body || body.error){
 				return res.status(500).send(body.error || "Unknown Error");
 			}
-			console.log(body);
 			let mode = req.params.mode || "all";
 			if (mode === "all") {
 				let data = body[config.fortnite.MODES[mode]];
@@ -207,4 +207,36 @@ router.get("/:platform/:username/:mode?", (req, res, next) => {
 		});
 });
 
+/* GET home page. */
+router.get("/raw/:platform/:username/:mode?", (req, res, next) => {
+	let settings = {
+		API_KEY: config.fortnite.API_KEY
+	};
+	let server = new FortniteApi(settings);
+	server
+		.stats(req.params.platform, req.params.username)
+		.then(body => {
+			if (!body || body.error) {
+				return res.status(500).send(body.error || "Unknown Error");
+			}
+			let mode = req.params.mode || "all";
+			if (mode === "all") {
+				let data = body[config.fortnite.MODES[mode]];
+				return res.json(data);
+			} else {
+				let source = body.stats[config.fortnite.MODES[mode]];
+				if (!source) {
+					return res.json([]);
+				} else {
+					return res.json(source);
+				}
+			}
+		})
+		.catch(err => {
+			if (err) {
+				return res.status(500).send(err.message);
+			}
+			return next();
+		});
+});
 module.exports = router;

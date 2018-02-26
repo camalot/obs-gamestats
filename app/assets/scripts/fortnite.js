@@ -38,15 +38,21 @@ $(function() {
 							$v.html(item.display);
 							break;
 						case "progress":
+							$(".mdl-js-progress", template).first().on('mdl-componentupgraded', function() {
+								this.MaterialProgress.setProgress(item.value);
+								if ($(".mdl-js-progress .progressbar-label", template).length === 0) {
+									$(".mdl-js-progress", template).append(`<div class="progressbar-label">${item.display}</div>`);
+								}
+							}).get(0);
 							break;
 						default:
 							break;
 					}
 					if (old.length === 1) {
-						old.replaceWith(template);
-					} else {
-						target.append(template);
+						target.remove(old);
 					}
+
+					target.append(template);
 				}
 			}
 		});
