@@ -18,7 +18,7 @@ This provides OBS overlay of data from The Tracker Network
 
 ### RUN IN HEROKU
 
-![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ### RUN IN DOCKER
 
