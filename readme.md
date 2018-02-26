@@ -39,7 +39,8 @@ $ docker run -d -P \
 - Create a `.env` file in the `obs-trackernetwork` directory. 
 - Add the following:
 ```
-
+TN_FORTNITE_API_KEY=<you-fortnitetracker-api-key>
+TN_FORTNITE_POLL_DELAY=60
 ```
 - Open shell and run the following:
 ```shell
