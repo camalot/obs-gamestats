@@ -5,11 +5,13 @@ This provides OBS overlay of data from The Tracker Network
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ZZF3RAC2HASS)
 
 
-If you use on your OBS, I would appreciate a link in your `Information Section`: 
+### LICENSE
+
+Please add attribution to your Stream Information Section (if supported):
 
 > [OBS-TrackerNetwork](https://github.com/camalot/obs-trackernetwork) by [DarthMinos](https://www.twitch.tv/darthminos)
 
-Just add this to your Information section:
+Markdown:
 ```markdown
 [OBS-TrackerNetwork](https://github.com/camalot/obs-trackernetwork) by [DarthMinos](https://www.twitch.tv/darthminos)
 ```
