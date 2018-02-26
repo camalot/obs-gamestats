@@ -43,6 +43,7 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 - `all`
 	- `*` : SPECIAL ALL FIELDS (Default)
 	- `avgsurvivaltime` : Avg Survival Time
+	- `avgsurvivaltime_` : Avg Survival Time % 
 	- `timeplayed` : Time Played
 	- `kpm` : Kills Per Min
 	- `kd` : Kill / Death Ratio
@@ -62,13 +63,129 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `top5` : Total Top 5
 	- `top3` : Total Top 3
 - `solo`
+	- `*` : SPECIAL ALL FIELDS (Default)
+	- `avgmatchtime`: Avg Match Time
+	- `avgmatchtime_`: Avg Match Time %
+	- `kd` : Kill / Death Ratio
+	- `kd_` : Kill / Death Ratio %
+	- `kills` : Kills
+	- `kills_` : Kills %
+	- `kpg` : Kills Per Match
+	- `kpg_` : Kills Per Match %
+	- `kpm` : Kills Per Minute
+	- `kpm_` : Kills Per Minute %
+	- `matches` : Matches
+	- `matches_` : Matches %
+	- `score` : Score (Tracker Network Score?)
+	- `score_` : Score % (Tracker Network Score?)
+	- `scorepermatch` : Score Per Match
+	- `scorepermatch_` : Score Per Match %
+	- `scoreperminute` : Score Per Minute
+	- `scoreperminute_` : Score Per Minute %
+	- `timeplayed` : Time Played
+	- `timeplayed_` : Time Played %
+	- `top25` : Top 25
+	- `top25_` : Top 25 %
+	- `top12` : Top 12
+	- `top12_` : Top 12 %
+	- `top10` : Top 10
+	- `top10_` : Top 10 %
+	- `top6` : Top 6
+	- `top6_` : Top 6 %
+	- `top5` : Top 5
+	- `top5_` : Top 5 %
+	- `top3` : Top 3
+	- `top3_` : Top 3 %
+	- `wins` : Wins
+	- `wins_` : Wins %
+	- `trnrating` : TRN Rating
+	- `trnrating_` : TRN Rating %
 - `duo`
+	- `*` : SPECIAL ALL FIELDS (Default)
+	- `avgmatchtime`: Avg Match Time
+	- `avgmatchtime_`: Avg Match Time %
+	- `kd` : Kill / Death Ratio
+	- `kd_` : Kill / Death Ratio %
+	- `kills` : Kills
+	- `kills_` : Kills %
+	- `kpg` : Kills Per Match
+	- `kpg_` : Kills Per Match %
+	- `kpm` : Kills Per Minute
+	- `kpm_` : Kills Per Minute %
+	- `matches` : Matches
+	- `matches_` : Matches %
+	- `score` : Score (Tracker Network Score?)
+	- `score_` : Score % (Tracker Network Score?)
+	- `scorepermatch` : Score Per Match
+	- `scorepermatch_` : Score Per Match %
+	- `scoreperminute` : Score Per Minute
+	- `scoreperminute_` : Score Per Minute %
+	- `timeplayed` : Time Played
+	- `timeplayed_` : Time Played %
+	- `top25` : Top 25
+	- `top25_` : Top 25 %
+	- `top12` : Top 12
+	- `top12_` : Top 12 %
+	- `top10` : Top 10
+	- `top10_` : Top 10 %
+	- `top6` : Top 6
+	- `top6_` : Top 6 %
+	- `top5` : Top 5
+	- `top5_` : Top 5 %
+	- `top3` : Top 3
+	- `top3_` : Top 3 %
+	- `wins` : Wins
+	- `wins_` : Wins %
+	- `trnrating` : TRN Rating
+	- `trnrating_` : TRN Rating %
 - `squad`
+	- `*` : SPECIAL ALL FIELDS (Default)
+	- `avgmatchtime`: Avg Match Time
+	- `avgmatchtime_`: Avg Match Time %
+	- `kd` : Kill / Death Ratio
+	- `kd_` : Kill / Death Ratio %
+	- `kills` : Kills
+	- `kills_` : Kills %
+	- `kpg` : Kills Per Match
+	- `kpg_` : Kills Per Match %
+	- `kpm` : Kills Per Minute
+	- `kpm_` : Kills Per Minute %
+	- `matches` : Matches
+	- `matches_` : Matches %
+	- `score` : Score (Tracker Network Score?)
+	- `score_` : Score % (Tracker Network Score?)
+	- `scorepermatch` : Score Per Match
+	- `scorepermatch_` : Score Per Match %
+	- `scoreperminute` : Score Per Minute
+	- `scoreperminute_` : Score Per Minute %
+	- `timeplayed` : Time Played
+	- `timeplayed_` : Time Played %
+	- `top25` : Top 25
+	- `top25_` : Top 25 %
+	- `top12` : Top 12
+	- `top12_` : Top 12 %
+	- `top10` : Top 10
+	- `top10_` : Top 10 %
+	- `top6` : Top 6
+	- `top6_` : Top 6 %
+	- `top5` : Top 5
+	- `top5_` : Top 5 %
+	- `top3` : Top 3
+	- `top3_` : Top 3 %
+	- `wins` : Wins
+	- `wins_` : Wins %
+	- `trnrating` : TRN Rating
+	- `trnrating_` : TRN Rating %
 ### ENVIRONMENT VARIABLES
+
+- `TN_POLL_DELAY` : Delay in seconds to poll for stats. (Default 60)
 
 #### FORTNITE
 - `TN_FORTNITE_API_KEY` : Fortnite Tracker API Key [See documentation to create API Key](https://fortnitetracker.com/site-api)
-- `TN_FORTNITE_POLL_DELAY` : Delay in seconds to poll for stats. (Default 60)
+
+#### PUBG
+- `TN_PUBG_API_KEY` : PUBG Tracker API Key [See documentation to create API Key](https://pubgtracker.com/site-api)
+
 
 ---
 
@@ -81,7 +198,9 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+After deploying, you can manage the app in Heroku to set up automatic deployments, and it will automatically deploy updates when the code is changed. 
 
+[![Auto Deploy](https://i.imgur.com/nNb6oBOl.png)](https://i.imgur.com/nNb6oBO.png)
 
 ### RUN IN DOCKER
 
@@ -93,7 +212,7 @@ $ docker run -d -P \
 	--restart unless-stopped \
 	--name "obs-trackernetwork" \
 	-e TN_FORTNITE_API_KEY="${TN_FORTNITE_API_KEY}" \
-	-e TN_FORTNITE_POLL_DELAY="${TN_FORTNITE_POLL_DELAY}" \
+	-e TN_POLL_DELAY="${TN_FORTNITE_POLL_DELAY}" \
 	-t camalot/obs-trackernetwork
 ```
 
@@ -103,7 +222,7 @@ $ docker run -d -P \
 - Add the following:
 ```
 TN_FORTNITE_API_KEY=<you-fortnitetracker-api-key>
-TN_FORTNITE_POLL_DELAY=60
+TN_POLL_DELAY=60
 ```
 - Open shell and run the following:
 ```shell

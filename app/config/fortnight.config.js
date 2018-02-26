@@ -2,6 +2,7 @@
 'use strict';
 let result = {
 	fortnite: {
+		// https://fortnitetracker.com/site-api
 		API_KEY: process.env.TN_FORTNITE_API_KEY,
 		MODES: {
 			all: "lifeTimeStats",
@@ -20,7 +21,7 @@ let result = {
 			"matchesplayed": "matches"
 		},
 		// seconds to poll
-		POLL_DELAY: parseInt(process.env.TN_FORTNITE_POLL_DELAY || "60", 0) * 1000
+		POLL_DELAY: parseInt(process.env.TN_POLL_DELAY || "60", 0) * 1000
 
 	}
 };
