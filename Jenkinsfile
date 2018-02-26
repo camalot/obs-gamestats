@@ -37,9 +37,8 @@ node ("node") {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.CI_ARTIFACTORY_CREDENTIAL_ID,
 												usernameVariable: 'ARTIFACTORY_USERNAME', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
 					stage ("install" ) {
-						env.OCTOPRINT_API_KEY = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "OCTOPRINT_API_KEY")
-						env.OCTOPRINT_HOST = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "OCTOPRINT_HOST")
-						env.OCTOPRINT_PORT = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "OCTOPRINT_PORT")
+						env.TN_FORTNITE_API_KEY = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "TN_FORTNITE_API_KEY")
+						env.TN_PUBG_API_KEY = SecretsVault.get(this, "secret/${env.CI_PROJECT_NAME}", "TN_PUBG_API_KEY")
 
 						deleteDir()
 						Branch.checkout(this, env.CI_PROJECT_NAME)

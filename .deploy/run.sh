@@ -39,9 +39,8 @@ PULL_REPOSITORY="${DOCKER_REGISTRY}";
 [[ -z "${BUILD_VERSION// }" ]] && __error "Environment variable 'CI_BUILD_VERSION' missing or is empty";
 [[ -z "${BUILD_ORG// }" ]] && __error "Environment variable 'CI_DOCKER_ORGANIZATION' missing or is empty";
 
-[[ -z "${OCTOPRINT_HOST// }" ]] && __error "Environment variable 'OCTOPRINT_HOST' missing or is empty";
-[[ -z "${OCTOPRINT_PORT// }" ]] && __error "Environment variable 'HUBOT_REACTION_RESPONSES' missing or is empty";
-[[ -z "${OCTOPRINT_API_KEY// }" ]] && __error "Environment variable 'HUBOT_SLACK_TOKEN' missing or is empty";
+[[ -z "${TN_FORTNITE_API_KEY// }" ]] && __error "Environment variable 'TN_FORTNITE_API_KEY' missing or is empty";
+[[ -z "${TN_PUBG_API_KEY// }" ]] && __error "Environment variable 'TN_PUBG_API_KEY' missing or is empty";
 
 DOCKER_IMAGE="${BUILD_ORG}/${BUILD_PROJECT}:${BUILD_VERSION}";
 
@@ -77,8 +76,7 @@ docker run -d \
 	--user 0 \
 	--restart unless-stopped \
 	--name "${BUILD_PROJECT}" \
-	-e OCTOPRINT_API_KEY="${OCTOPRINT_API_KEY}" \
-	-e OCTOPRINT_HOST="${OCTOPRINT_HOST}" \
-	-e OCTOPRINT_PORT="${OCTOPRINT_PORT}" \
+	-e TN_FORTNITE_API_KEY="${TN_FORTNITE_API_KEY}" \
+	-e TN_PUBG_API_KEY="${TN_PUBG_API_KEY}" \
 	-p "49140:3000" \
 	-t "${DOCKER_IMAGE}";
