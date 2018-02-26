@@ -88,59 +88,59 @@ let _transformObjectStats = (input, fields) => {
 							display: item.displayValue || item.value
 						});
 					}
-					if (
-						item.percentile &&
-						!_hasValue(added, `${fieldName}_`) &&
-						!fieldName.endsWith("_") &&
-						(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
-					) {
-						let fieldIndex = null;
-						if (_hasValue(fields, `${fieldName}_`)) {
-							for (let f = 0; f < data.length; ++f) {
-								if (data[f].field === fieldName) {
-									fieldIndex = f + 1;
-									break;
-								}
-							}
-						}
-						added.push(`${fieldName}_`);
-						console.log("added: " + fieldName + "_");
-						console.log("index: " + fieldIndex);
-						data.splice(fieldIndex ? fieldIndex : 0, 0, {
-							field: `${fieldName}_`,
-							label: `${item.label} %`,
-							value: item.percentile,
-							display: `${item.percentile}%`
-						});
-					}
+					// if (
+					// 	item.percentile &&
+					// 	!_hasValue(added, `${fieldName}_`) &&
+					// 	!fieldName.endsWith("_") &&
+					// 	(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
+					// ) {
+					// 	let fieldIndex = null;
+					// 	if (_hasValue(fields, `${fieldName}_`)) {
+					// 		for (let f = 0; f < data.length; ++f) {
+					// 			if (data[f].field === fieldName) {
+					// 				fieldIndex = f + 1;
+					// 				break;
+					// 			}
+					// 		}
+					// 	}
+					// 	added.push(`${fieldName}_`);
+					// 	console.log("added: " + fieldName + "_");
+					// 	console.log("index: " + fieldIndex);
+					// 	data.splice(fieldIndex ? fieldIndex : 0, 0, {
+					// 		field: `${fieldName}_`,
+					// 		label: `${item.label} %`,
+					// 		value: item.percentile,
+					// 		display: `${item.percentile}%`
+					// 	});
+					// }
 				}
 			}
 
-			let winIndex = null;
-			if (_hasValue(fields, "wins_")) {
-				for (let f = 0; f < data.length; ++f) {
-					if (data[f].field === "wins") {
-						winIndex = f + 1;
-						break;
-					}
-				}
-			}
-			if (
-				!_hasValue(added, "wins_") &&
-				(_hasValue(fields, "wins_") || _hasValue(fields, "*"))
-			) {
-				let matches = input.matches.value;
-				let wins = input.top1.value;
-				let percentile = wins / matches * 100;
-				console.log("index: " + winIndex);
-				let aitem = {
-					field: `wins_`,
-					label: `Wins %`,
-					value: percentile,
-					display: `${percentile}%`
-				};
-				data.splice(winIndex ? winIndex : 0, 0, aitem);
-			}
+			// let winIndex = null;
+			// if (_hasValue(fields, "wins_")) {
+			// 	for (let f = 0; f < data.length; ++f) {
+			// 		if (data[f].field === "wins") {
+			// 			winIndex = f + 1;
+			// 			break;
+			// 		}
+			// 	}
+			// }
+			// if (
+			// 	!_hasValue(added, "wins_") &&
+			// 	(_hasValue(fields, "wins_") || _hasValue(fields, "*"))
+			// ) {
+			// 	let matches = input.matches.value;
+			// 	let wins = input.top1.value;
+			// 	let percentile = wins / matches * 100;
+			// 	console.log("index: " + winIndex);
+			// 	let aitem = {
+			// 		field: `wins_`,
+			// 		label: `Wins %`,
+			// 		value: percentile,
+			// 		display: `${percentile}%`
+			// 	};
+			// 	data.splice(winIndex ? winIndex : 0, 0, aitem);
+			// }
 
 			if (_hasValue(fields, "*")) {
 				console.log("sort");
