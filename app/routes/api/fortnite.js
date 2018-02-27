@@ -22,6 +22,9 @@ let _cleanLabel = s => {
 	return s.replace(/(\d)s/i, "$1").replace(/^win%$/i, "Wins %");
 };
 let _cleanNumber = s => {
+	if(/\d[mdhs]|[a-z]/ig.test(s)) {
+		return s;
+	}
 	return parseFloat(s.toString().replace(/,/i, ""));
 }
 let _hasValue = (array, value) => {
