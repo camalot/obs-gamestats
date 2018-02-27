@@ -1,21 +1,21 @@
-# OBS-TRACKERNETWORK
+# OBS-GAMESTATS
 
-This provides OBS overlay of data from The Tracker Network
+This provides OBS overlay of data from The Tracker Network and other sources
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ZZF3RAC2HASS)
 
 
 ### LICENSE
 
-[Apache 2.0](https://github.com/camalot/obs-trackernetwork/blob/develop/LICENSE.md)
+[Apache 2.0](https://github.com/camalot/obs-gamestats/blob/develop/LICENSE.md)
 
 Please add attribution to your Stream Information Section (if supported):
 
-> [OBS-TrackerNetwork](https://github.com/camalot/obs-trackernetwork) by [DarthMinos](https://www.twitch.tv/darthminos)
+> [OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
 
 Markdown:
 ```markdown
-[OBS-TrackerNetwork](https://github.com/camalot/obs-trackernetwork) by [DarthMinos](https://www.twitch.tv/darthminos)
+[OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
 ```
 
 ### ENDPOINTS
@@ -184,18 +184,18 @@ After deploying, you can manage the app in Heroku to set up automatic deployment
 The conainer exposes port 3000. `-P` will map the port on the host.
 
 ```shell
-$ docker build --pull --tag camalot/obs-trackernetwork -f "./Dockerfile" .
+$ docker build --pull --tag camalot/obs-gamestats -f "./Dockerfile" .
 $ docker run -d -P \
 	--restart unless-stopped \
-	--name "obs-trackernetwork" \
+	--name "obs-gamestats" \
 	-e TN_FORTNITE_API_KEY="${TN_FORTNITE_API_KEY}" \
 	-e TN_POLL_DELAY="${TN_FORTNITE_POLL_DELAY}" \
-	-t camalot/obs-trackernetwork
+	-t camalot/obs-gamestats
 ```
 
 ### RUN IN NODE
 
-- Create a `.env` file in the `obs-trackernetwork` directory. 
+- Create a `.env` file in the `obs-gamestats` directory. 
 - Add the following:
 ```
 TN_FORTNITE_API_KEY=<you-fortnitetracker-api-key>

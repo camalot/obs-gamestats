@@ -1,7 +1,7 @@
 FROM node:9-alpine
 
 # set version label
-ARG PROJECT_NAME="obs-trackernetwork"
+ARG PROJECT_NAME="obs-gamestats"
 ARG BUILD_VERSION="1.0.0-snapshot"
 
 ARG PUID=3000

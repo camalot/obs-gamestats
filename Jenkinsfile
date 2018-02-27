@@ -7,7 +7,7 @@ if(env.BRANCH_NAME ==~ /master$/) {
 
 
 node ("node") {
-	def ProjectName = "obs-trackernetwork"
+	def ProjectName = "obs-gamestats"
 	def slack_notify_channel = null
 	def MAJOR_VERSION = 1
 	def MINOR_VERSION = 0
