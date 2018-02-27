@@ -12,13 +12,16 @@ let _cleanField = s => {
 		.replace(/[\s\/]/gi, "")
 		.replace(/%/i, "s_")
 		.replace(/\s?%/i, "_")
-		.replace(/(\d)s/i, "$1_season")
+		.replace(/(\d)s/i, "$1")
 		.toLowerCase();
 };
 
 let _cleanLabel = s => {
-	return s.replace(/(\d)s/i, "$1 (Season)").replace(/^win%$/i, "Wins %");
+	return s.replace(/(\d)s/i, "$1").replace(/^win%$/i, "Wins %");
 };
+let _cleanNumber = s => {
+	return parseFloat(s.toString().replace(/,/i, ""));
+}
 let _hasValue = (array, value) => {
 	return array.indexOf(value) >= 0;
 };
@@ -30,10 +33,10 @@ let _transformArrayStats = (input, fields) => {
 		for (let x = 0; x < input.length; ++x) {
 			let item = input[x];
 			let fieldName = _cleanField(item.key);
+
 			if (config.fortnite.LABEL_TO_FIELD[fieldName]) {
 				fieldName = config.fortnite.LABEL_TO_FIELD[fieldName];
 			}
-
 			let winIndex = null;
 			if (!_hasValue(added, "wins_")) {
 				for (let f = 0; f < data.length; ++f) {
@@ -43,16 +46,44 @@ let _transformArrayStats = (input, fields) => {
 					}
 				}
 			}
+
+			/*** START: This is ugly, but merges duplicate fields***/
+			let itemValue = _cleanNumber(item.value);
+			let existingItemIndex = null;
+			let filtered = data.filter((v, i) => {
+				if(v.field === fieldName) {
+					existingItemIndex = i;
+				}
+				return v.field === fieldName;
+			});
+			if (filtered.length === 1) {
+				console.log("add " + filtered[0].value + " + " + item.value);
+				console.log("index: " + existingItemIndex);
+				itemValue = _cleanNumber(filtered[0].value) + _cleanNumber(item.value);
+				if(existingItemIndex >= 0) {
+					data.splice(existingItemIndex, 1);
+				}
+				let addedIndex = added.indexOf(fieldName);
+				if(addedIndex >= 0) {
+					added.splice(addedIndex, 1);
+				}
+			}
+			/*** END: UGLY ***/
+
 			if (
 				!_hasValue(added, fieldName) &&
 				(_hasValue(fields, fieldName) || _hasValue(fields, "*"))
 			) {
+				let postFix = "";
+				if (fieldName.endsWith("_")) {
+					postFix = "%";
+				}
 				added.push(fieldName);
 				let aitem = {
 					field: fieldName,
 					label: _cleanLabel(item.key),
-					value: item.value,
-					display: item.value
+					value: itemValue,
+					display: itemValue.toLocaleString() + postFix
 				};
 				data.splice(winIndex ? winIndex : 0, 0, aitem);
 			}
@@ -80,68 +111,38 @@ let _transformObjectStats = (input, fields) => {
 						!fieldName.endsWith("_")
 					) {
 						added.push(fieldName);
-						console.log("added: " + fieldName);
 						data.splice(0, 0, {
 							field: fieldName,
 							label: item.label,
-							value: item.value,
-							display: item.displayValue || item.value
+							value: _cleanNumber(item.value),
+							display: _cleanNumber(item.displayValue || item.value).toLocaleString()
 						});
 					}
-					// if (
-					// 	item.percentile &&
-					// 	!_hasValue(added, `${fieldName}_`) &&
-					// 	!fieldName.endsWith("_") &&
-					// 	(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
-					// ) {
-					// 	let fieldIndex = null;
-					// 	if (_hasValue(fields, `${fieldName}_`)) {
-					// 		for (let f = 0; f < data.length; ++f) {
-					// 			if (data[f].field === fieldName) {
-					// 				fieldIndex = f + 1;
-					// 				break;
-					// 			}
-					// 		}
-					// 	}
-					// 	added.push(`${fieldName}_`);
-					// 	console.log("added: " + fieldName + "_");
-					// 	console.log("index: " + fieldIndex);
-					// 	data.splice(fieldIndex ? fieldIndex : 0, 0, {
-					// 		field: `${fieldName}_`,
-					// 		label: `${item.label} %`,
-					// 		value: item.percentile,
-					// 		display: `${item.percentile}%`
-					// 	});
-					// }
+					if (
+						item.percentile &&
+						!_hasValue(added, `${fieldName}_`) &&
+						!fieldName.endsWith("_") &&
+						(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
+					) {
+						let fieldIndex = null;
+						if (_hasValue(fields, `${fieldName}_`)) {
+							for (let f = 0; f < data.length; ++f) {
+								if (data[f].field === fieldName) {
+									fieldIndex = f + 1;
+									break;
+								}
+							}
+						}
+						added.push(`${fieldName}_`);
+						data.splice(fieldIndex ? fieldIndex : 0, 0, {
+							field: `${fieldName}_`,
+							label: `${item.label} %`,
+							value: item.percentile,
+							display: `${item.percentile}%`
+						});
+					}
 				}
 			}
-
-			// let winIndex = null;
-			// if (_hasValue(fields, "wins_")) {
-			// 	for (let f = 0; f < data.length; ++f) {
-			// 		if (data[f].field === "wins") {
-			// 			winIndex = f + 1;
-			// 			break;
-			// 		}
-			// 	}
-			// }
-			// if (
-			// 	!_hasValue(added, "wins_") &&
-			// 	(_hasValue(fields, "wins_") || _hasValue(fields, "*"))
-			// ) {
-			// 	let matches = input.matches.value;
-			// 	let wins = input.top1.value;
-			// 	let percentile = wins / matches * 100;
-			// 	console.log("index: " + winIndex);
-			// 	let aitem = {
-			// 		field: `wins_`,
-			// 		label: `Wins %`,
-			// 		value: percentile,
-			// 		display: `${percentile}%`
-			// 	};
-			// 	data.splice(winIndex ? winIndex : 0, 0, aitem);
-			// }
-
 			if (_hasValue(fields, "*")) {
 				console.log("sort");
 				data.sort(function(a, b) {
@@ -171,7 +172,7 @@ router.get("/:platform/:username/:mode?", (req, res, next) => {
 	server
 		.stats(req.params.platform, req.params.username)
 		.then(body => {
-			if(!body || body.error){
+			if (!body || body.error) {
 				return res.status(500).send(body.error || "Unknown Error");
 			}
 			let mode = req.params.mode || "all";
