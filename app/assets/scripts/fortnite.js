@@ -1,5 +1,7 @@
+"use strict";
 $(function() {
 	let args = {};
+	let upgradeTimeout = null;
 	$('[data-type="arg"]').each(function(i, a) {
 		let $a = $(a);
 		let key = $a.attr("name");
@@ -38,10 +40,14 @@ $(function() {
 							$v.html(item.display);
 							break;
 						case "progress":
-							$(".mdl-js-progress", template).first().on('mdl-componentupgraded', function() {
+							// progress not rendering correctly right now.
+							continue;
+							console.log("set value when upgraded: " + item.value);
+							$(".mdl-js-progress", template).on('mdl-componentupgraded', function() {
+								console.log("set value: " + item.value);
 								this.MaterialProgress.setProgress(item.value);
 								if ($(".mdl-js-progress .progressbar-label", template).length === 0) {
-									$(".mdl-js-progress", template).append(`<div class="progressbar-label">${item.display}</div>`);
+									//$(".mdl-js-progress", template).append(`<div class="progressbar-label">${item.display}</div>`);
 								}
 							}).get(0);
 							break;
@@ -49,10 +55,18 @@ $(function() {
 							break;
 					}
 					if (old.length === 1) {
+						$(old).off('mdl-componentupgraded');
 						target.remove(old);
 					}
 
 					target.append(template);
+					if(upgradeTimeout !== null) {
+						clearTimeout(upgradeTimeout);
+					}
+					upgradeTimeout = setTimeout(() => {
+						console.log("upgrade dom");
+						componentHandler.upgradeDom();
+					}, 300);
 				}
 			}
 		});
@@ -60,5 +74,28 @@ $(function() {
 	setInterval(function() {
 		_run(url);
 	}, poll);
+
+// 	let mdlUpgradeDom = false;
+// 	setInterval(function () {
+// 		if (mdlUpgradeDom) {
+// 			console.log("upgrade dom");
+// 			componentHandler.upgradeDom();
+// 			mdlUpgradeDom = false;
+// 		}
+// 	}, 200);
+
+// 	let observer = new MutationObserver(function () {
+// 		mdlUpgradeDom = true;
+// 	});
+// 	observer.observe(document.body, {
+// 		childList: true,
+// 		subtree: true
+// 	});
+// /* support <= IE 10
+// $(document).on('DOMNodeInserted', function(e) {
+// 		mdlUpgradeDom = true;
+// });
+// */
+
 	_run(url);
 });

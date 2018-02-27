@@ -41,6 +41,10 @@ Markdown:
 
 ##### FIELDS
 
+> `NOTE:` Progress Bars (Any of the `_` fields for percentages) are not currently enabled due to an issue with the progress bar rendering incorrectly.
+
+> Values that are `0` will not render, unless they are explicitly set in the fields parameter.
+
 This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 - `all`
 	- `*` : SPECIAL ALL FIELDS (Default)
@@ -53,14 +57,9 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `wins` : Total Wins
 	- `wins_` : Win Percentage
 	- `matches` : Matches Played
-	- `score` : Score (Tracker Network Score?)
-	- `top25_season` : Total Top 25 Current Season
-	- `top12_season` : Total Top 12 Current Season
-	- `top6_season` : Total Top 6 Current Season
-	- `top5_season` : Total Top 5 Current Season
-	- `top3_season` : Total Top 3 Current Season
 	- `top25` : Total Top 25
 	- `top12` : Total Top 12
+	- `top10` : Total Top 10
 	- `top6` : Total Top 6
 	- `top5` : Total Top 5
 	- `top3` : Total Top 3
@@ -78,12 +77,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `kpm_` : Kills Per Minute %
 	- `matches` : Matches
 	- `matches_` : Matches %
-	- `score` : Score (Tracker Network Score?)
-	- `score_` : Score % (Tracker Network Score?)
-	- `scorepermatch` : Score Per Match
-	- `scorepermatch_` : Score Per Match %
-	- `scoreperminute` : Score Per Minute
-	- `scoreperminute_` : Score Per Minute %
 	- `timeplayed` : Time Played
 	- `timeplayed_` : Time Played %
 	- `top25` : Top 25
@@ -100,8 +93,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `top3_` : Top 3 %
 	- `wins` : Wins
 	- `wins_` : Wins %
-	- `trnrating` : TRN Rating
-	- `trnrating_` : TRN Rating %
 - `duo`
 	- `*` : SPECIAL ALL FIELDS (Default)
 	- `avgmatchtime`: Avg Match Time
@@ -116,12 +107,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `kpm_` : Kills Per Minute %
 	- `matches` : Matches
 	- `matches_` : Matches %
-	- `score` : Score (Tracker Network Score?)
-	- `score_` : Score % (Tracker Network Score?)
-	- `scorepermatch` : Score Per Match
-	- `scorepermatch_` : Score Per Match %
-	- `scoreperminute` : Score Per Minute
-	- `scoreperminute_` : Score Per Minute %
 	- `timeplayed` : Time Played
 	- `timeplayed_` : Time Played %
 	- `top25` : Top 25
@@ -138,8 +123,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `top3_` : Top 3 %
 	- `wins` : Wins
 	- `wins_` : Wins %
-	- `trnrating` : TRN Rating
-	- `trnrating_` : TRN Rating %
 - `squad`
 	- `*` : SPECIAL ALL FIELDS (Default)
 	- `avgmatchtime`: Avg Match Time
@@ -154,12 +137,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `kpm_` : Kills Per Minute %
 	- `matches` : Matches
 	- `matches_` : Matches %
-	- `score` : Score (Tracker Network Score?)
-	- `score_` : Score % (Tracker Network Score?)
-	- `scorepermatch` : Score Per Match
-	- `scorepermatch_` : Score Per Match %
-	- `scoreperminute` : Score Per Minute
-	- `scoreperminute_` : Score Per Minute %
 	- `timeplayed` : Time Played
 	- `timeplayed_` : Time Played %
 	- `top25` : Top 25
@@ -176,8 +153,6 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `top3_` : Top 3 %
 	- `wins` : Wins
 	- `wins_` : Wins %
-	- `trnrating` : TRN Rating
-	- `trnrating_` : TRN Rating %
 ### ENVIRONMENT VARIABLES
 
 - `TN_POLL_DELAY` : Delay in seconds to poll for stats. (Default 60)

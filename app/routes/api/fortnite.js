@@ -7,6 +7,8 @@ const config = require("./fortnite.config.js");
 const utils = require("../../lib/utils");
 const FortniteApi = require("../../lib/trackernetwork").fortnite;
 const async = require("async");
+
+const filteredFields = ["score", "score_", "scorepermatch", "scorepermatch_", "scoreperminute", "scoreperminute_", "trnrating", "trnrating_"];
 let _cleanField = s => {
 	return s
 		.replace(/[\s\/]/gi, "")
@@ -33,7 +35,10 @@ let _transformArrayStats = (input, fields) => {
 		for (let x = 0; x < input.length; ++x) {
 			let item = input[x];
 			let fieldName = _cleanField(item.key);
-
+			let itemValue = _cleanNumber(item.value);
+			if (_hasValue(filteredFields, fieldName) || (itemValue === 0 && _hasValue(fields, "*"))) {
+				continue;
+			}
 			if (config.fortnite.LABEL_TO_FIELD[fieldName]) {
 				fieldName = config.fortnite.LABEL_TO_FIELD[fieldName];
 			}
@@ -48,7 +53,6 @@ let _transformArrayStats = (input, fields) => {
 			}
 
 			/*** START: This is ugly, but merges duplicate fields***/
-			let itemValue = _cleanNumber(item.value);
 			let existingItemIndex = null;
 			let filtered = data.filter((v, i) => {
 				if(v.field === fieldName) {
@@ -105,6 +109,11 @@ let _transformObjectStats = (input, fields) => {
 					if (config.fortnite.LABEL_TO_FIELD[fieldName]) {
 						fieldName = config.fortnite.LABEL_TO_FIELD[fieldName];
 					}
+					let itemValue = _cleanNumber(item.value);
+					if (_hasValue(filteredFields, fieldName) || (itemValue === 0 && _hasValue(fields, "*"))) {
+						continue;
+					}
+
 					if (
 						(_hasValue(fields, fieldName) || _hasValue(fields, "*")) &&
 						!_hasValue(added, fieldName) &&
@@ -114,7 +123,7 @@ let _transformObjectStats = (input, fields) => {
 						data.splice(0, 0, {
 							field: fieldName,
 							label: item.label,
-							value: _cleanNumber(item.value),
+							value: itemValue,
 							display: _cleanNumber(item.displayValue || item.value).toLocaleString()
 						});
 					}
