@@ -2,11 +2,11 @@
 'use strict';
 const npmpackage = require("../../package.json");
 let result = {
-	trackernetwork: {
-		BRAIN_KEY: "OBS-TRACKERNETWORK",
+	GAMESTATS: {
+		BRAIN_KEY: "OBS-GAMESTATS",
 		VERSION: npmpackage.version,
-		TITLE: "TrackerNetwork",
-		URL: npmpackage.homepage,
+		TITLE: "OBS-GAMESTATS",
+		URL: npmpackage.homepage
 	}
 };
 

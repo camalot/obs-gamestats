@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
 app.use(require("./lib/middleware/colors"));
+app.use(require("./lib/middleware/gamestats"));
 
 app.use(
 	"/assets/material-design-lite",

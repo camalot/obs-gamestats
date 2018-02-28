@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const config = require('../config');
+const config = require('./overlay.config.js');
 const url = require('url');
 
 router.get('/fortnite/:platform/:username/:mode?', (req, res, next) => {

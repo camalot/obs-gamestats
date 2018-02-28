@@ -11,7 +11,7 @@ This provides OBS overlay of data from The Tracker Network and other sources
 
 Please add attribution to your Stream Information Section (if supported):
 
-> [OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
+[OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
 
 Markdown:
 ```markdown

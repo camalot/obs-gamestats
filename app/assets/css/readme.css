@@ -1,35 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+
 html,
 body {
 	padding: 0;
 	margin: 0;
 	font-family: "Roboto", "Helvetica", sans-serif;
+
+	background-color: #333;
+	color: #eee;
 }
 
-#ytvideo {
-	visibility: hidden;
+pre, code, kbd {
+	font-family: 'Roboto Mono'
 }
 
-.mdl-tabs__tab-bar .tab-add {
-	margin-left: 10px;
-	margin-top: 10px;
-	right: 0;
-	position: relative;
+code {
+	background-color: #333;
+	border: solid 1px #222;
+	padding: 0 3px 0 3px;
 }
 
-.page-fab {
-	position: absolute;
-	right: 2.5%;
-	bottom: 5px;
-}
-
-.mdl-tabs__tab-bar i.material-icons.md-16 {
-	margin-top: 10px;
-	font-size: 16pt;
-}
-
-.mdl-card-full,
-.mdl-card-full .mdl-card__content {
-	width: 100%;
+pre {
+	border: solid 1px #333;
+	padding: 10px;
 }
 
 main {
@@ -74,4 +68,8 @@ main {
 
 .mdl-layout__header-row h3 {
 	text-transform: uppercase;
+}
+
+.mdl-layout__header-row h3 img {
+		margin-right: 10px;
 }

@@ -1,0 +1,56 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//code.getmdl.io/1.3.0/material.light_green-deep_orange.min.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="//cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css"
+	/>
+	<link rel="stylesheet" type="text/css" href="/assets/dialog-polyfill/dialog-polyfill.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script defer src="//code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="stylesheet" href="/assets/css/readme.css" />
+
+	{{{block 'head'}}} {{{block 'head'}}}
+
+</head>
+
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<div class="android-header mdl-layout__header mdl-layout__header--waterfall mdl-color--blue-400">
+			<div class="mdl-layout__header-row">
+				<h3 class="mdl-color-text--white page-title">
+					<img src="/assets/images/bit13-48.png" style="vertical-align: text-bottom" />{{GAMESTATS.TITLE}}</h3>
+				<div class="mdl-layout-spacer"></div>
+			</div>
+		</div>
+
+		<main class="mdl-layout__content mdl-color--grey-900 ">
+			{{{body}}}
+		</main>
+		<footer class="mdl-mini-footer ">
+			<div class="mdl-mini-footer__left-section ">
+				<div class="mdl-logo "></div>
+				<ul class="mdl-mini-footer__link-list ">
+					<li>
+						<a href="{{GAMESTATS.URL}} " target="_blank ">{{GAMESTATS.TITLE}} v{{GAMESTATS.VERSION}}</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+	{{{block 'scripts'}}}
+</body>
