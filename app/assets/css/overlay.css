@@ -61,12 +61,17 @@ h3.info .label{
 	padding-right: 15px;
 	width: 49.5%;
 	display: inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 h3.info .value {
 	display: inline-block;
-	text-align: right;
-	position: absolute;
+	text-align: left;
+	position: relative;
 	right: 10px;
+	white-space: nowrap;
+
 }
 
 h3.info .label::after {
