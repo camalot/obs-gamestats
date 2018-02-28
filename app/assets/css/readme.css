@@ -29,6 +29,16 @@ code {
 	padding: 0 3px 0 3px;
 }
 
+blockquote::after,
+blockquote::before {
+	content: ''
+}
+
+blockquote {
+	padding: 0 1em;
+	border-left: 0.25em solid #555;
+	margin: 0 0 16 0;
+}
 
 main {
 	padding: 0 10% 0 10%;
