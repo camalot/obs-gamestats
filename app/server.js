@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
+app.use(require("./lib/middleware/colors"));
+
 app.use(
 	"/assets/material-design-lite",
 	express.static("node_modules/material-design-lite")

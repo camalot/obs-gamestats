@@ -18,6 +18,64 @@ Markdown:
 [OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
 ```
 
+### CUSTOMIZATION
+
+#### COLORS
+
+You can change the colors of the labels and values by using `query parameters`.
+
+- *Label*: `colors.label=red-400`
+- *Value*: `colors.value=red-400`
+
+Example:
+
+`/overlay/fortnite/pc/my-fn-user-name/solo?colors.label=red-400&colors.value=red-400`
+
+For a list of the colors that are supported, look at the color list [here](http://blog.jonathanargentiero.com/material-design-lite-color-classes-list/). The value after `.mdl-color--` is the value that is used.
+
+#### CSS CUSTOMIZATION
+
+OBS allows you to provide custom CSS with the browser source. Here are the CSS Selectors to use to customize it further.
+
+```css
+/* Stat label and value container */
+h3.info {
+
+}
+
+/* Stat Label */
+h3.info .label {
+	
+}
+
+/* Stat Value */
+h3.info .value {
+
+}
+```
+
+Here is an example of using a custom font for the labels and values:
+
+```css
+/* MAKE SURE THIS IS AT THE TOP OF THE CSS BOX */
+/* This will import a custom font from Google Fonts (https://fonts.google.com) */
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+/* this can be anywhere in the box */
+* {
+  font-family: 'Permanent Marker' !important;
+}
+```
+Unmodified Font
+
+![Unmodified Font](https://i.imgur.com/xc1kMWn.png)  
+
+Custom Font 
+
+![Custom Font](https://i.imgur.com/c0Behf7.png)
+
+
+
 ### ENDPOINTS
 
 #### FORTNITE
