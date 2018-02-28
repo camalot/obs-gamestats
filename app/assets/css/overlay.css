@@ -83,3 +83,12 @@ h3.info .label::after {
 .hidden {
 	display: none;
 }
+
+.darthminos {
+	padding-left: 26px;
+	background-image: url('/assets/images/twitch.png');
+	background-position: 0 2px;
+	background-size: 24px;
+	background-repeat: no-repeat;
+}
+
