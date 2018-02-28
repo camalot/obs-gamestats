@@ -2,13 +2,19 @@
 const config = require("../../config");
 module.exports = (req, res, next) => {
 	res.locals.colors = config.colors;
-
-	if ( req.query["colors.label"] ) {
-		res.locals.colors.label = req.query["colors.label"];
+	let regex = /^(?:(?:deep-)(?:orange|purple)|(?:light-)(?:blue|green)|red|pink|purple|indigo|blue|cyan|teal|green|lime|yellow|amber|orange|brown|grey|blue-grey)(?:-A?(?:50|[1-9]00))?|black|white$/;
+	let color = req.query["colors.label"];
+	if (color) {
+		if (regex.test(color)) {
+			res.locals.colors.label = color;
+		}
 	}
 
-	if (req.query["colors.value"]) {
-		res.locals.colors.value = req.query["colors.value"];
+	color = req.query["colors.value"];
+	if (color) {
+		if (regex.test(color)) {
+			res.locals.colors.value = color;
+		}
 	}
 
 	next();
