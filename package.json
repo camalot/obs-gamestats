@@ -1,15 +1,20 @@
 {
   "name": "obs-gamestats",
   "version": "1.0.0-snapshot",
-  "description": "",
+  "description": "OBS Game Stats Overlays",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www",
     "exec": "$(npm bin)/nodemon ./bin/www",
     "test": "jshint **/*.js --verbose && eslint . && istanbul cover --include-all-sources $(npm bin)/mocha test/* --reporter spec"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/camalot/obs-gamestats",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/camalot/obs-gamestats.git"
+  },
+  "author": "Ryan Conrad <camalot@gmail.com>",
+  "license": "Apache-2.0",
   "dependencies": {
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
