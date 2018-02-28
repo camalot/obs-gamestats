@@ -20,6 +20,7 @@ let result = {
 			"killspermatch": "kpg",
 			"matchesplayed": "matches"
 		},
+		
 		// seconds to poll
 		POLL_DELAY: parseInt(process.env.TN_POLL_DELAY || "60", 0) * 1000
 

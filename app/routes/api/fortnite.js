@@ -19,7 +19,10 @@ let _cleanField = s => {
 };
 
 let _cleanLabel = s => {
-	return s.replace(/(\d)s/i, "$1").replace(/^win%$/i, "Wins %");
+	return s
+		.replace(/(\d)s/i, "$1")
+		.replace(/^win%$/i, "Wins %")
+		.replace(/^matches played$/i, "Matches");
 };
 let _cleanNumber = s => {
 	if(/\d[mdhs]|[a-z]/ig.test(s)) {
