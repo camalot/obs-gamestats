@@ -1,5 +1,5 @@
 "use strict";
-var request = require("request-promise");
+const request = require("request-promise");
 
 const API_URL = "https://api.fortnitetracker.com/v1/profile";
 const platforms = {

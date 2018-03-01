@@ -5,7 +5,7 @@ const router = express.Router();
 const Promise = require("promise");
 const config = require("./fortnite.config.js");
 const utils = require("../../lib/utils");
-const FortniteApi = require("../../lib/trackernetwork").fortnite;
+const FortniteApi = require("../../lib/gamestats").fortnite;
 const async = require("async");
 
 const filteredFields = ["score", "score_", "scorepermatch", "scorepermatch_", "scoreperminute", "scoreperminute_", "trnrating", "trnrating_"];

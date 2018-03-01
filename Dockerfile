@@ -23,14 +23,14 @@ EXPOSE 3000
 RUN \
 	apk update && apk upgrade \
 	&& rm -rf /var/cache/apk/* \
-	&& mkdir -p /trackernetwork
+	&& mkdir -p /gamestats
 
 
-COPY . /trackernetwork
-WORKDIR /trackernetwork
+COPY . /gamestats
+WORKDIR /gamestats
 
 RUN \
-	chown -R "${VUSER}:${VGROUP}" /trackernetwork
+	chown -R "${VUSER}:${VGROUP}" /gamestats
 
 USER ${VUSER}
 

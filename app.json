@@ -4,6 +4,7 @@
 	"keywords": [
 		"obs",
 		"trackernetwork",
+		"gamestats",
 		"overlay"
 	],
 	"repository": "https://github.com/camalot/obs-gamestats.git",
