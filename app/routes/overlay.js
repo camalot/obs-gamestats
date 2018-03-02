@@ -9,16 +9,31 @@ router.get('/fortnite/:platform/:username/:mode?', (req, res, next) => {
 		return res.statusCode(500).send("Fortnite Tracker API Key missing");
 	}
 	// todo: use this function to call all renders automatically.
-	let loader = 'fortnite';
+	let loader = "general";
 	res.render("game", {
 		loader: loader,
 		args: {
 			platform: req.params.platform,
 			username: req.params.username,
 			mode: req.params.mode,
-			fields: req.query['fields'],
+			fields: req.query["fields"],
 			poll: config.fortnite.POLL_DELAY,
-			game: loader
+			game: "fortnite"
+		}
+	});
+});
+
+router.get("/seige/:platform/:username/", (req, res, next) => {
+	let loader = "general";
+	res.render("game", {
+		loader: loader,
+		args: {
+			platform: req.params.platform,
+			username: req.params.username,
+			fields: req.query["fields"],
+			poll: config.seige.POLL_DELAY,
+			mode: "",
+			game: "seige"
 		}
 	});
 });

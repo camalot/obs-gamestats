@@ -30,9 +30,7 @@ let _cleanNumber = s => {
 	}
 	return parseFloat(s.toString().replace(/,/i, ""));
 }
-let _hasValue = (array, value) => {
-	return array.indexOf(value) >= 0;
-};
+
 
 let _transformArrayStats = (input, fields) => {
 	return new Promise((resolve, reject) => {
@@ -42,14 +40,14 @@ let _transformArrayStats = (input, fields) => {
 			let item = input[x];
 			let fieldName = _cleanField(item.key);
 			let itemValue = _cleanNumber(item.value);
-			if (_hasValue(filteredFields, fieldName) || (itemValue === 0 && _hasValue(fields, "*"))) {
+			if (utils.array.hasValue(filteredFields, fieldName) || (itemValue === 0 && utils.array.hasValue(fields, "*"))) {
 				continue;
 			}
 			if (config.fortnite.LABEL_TO_FIELD[fieldName]) {
 				fieldName = config.fortnite.LABEL_TO_FIELD[fieldName];
 			}
 			let winIndex = null;
-			if (!_hasValue(added, "wins_")) {
+			if (!utils.array.hasValue(added, "wins_")) {
 				for (let f = 0; f < data.length; ++f) {
 					if (data[f].field === "wins") {
 						winIndex = f + 1;
@@ -81,8 +79,8 @@ let _transformArrayStats = (input, fields) => {
 			/*** END: UGLY ***/
 
 			if (
-				!_hasValue(added, fieldName) &&
-				(_hasValue(fields, fieldName) || _hasValue(fields, "*"))
+				!utils.array.hasValue(added, fieldName) &&
+				(utils.array.hasValue(fields, fieldName) || utils.array.hasValue(fields, "*"))
 			) {
 				let postFix = "";
 				if (fieldName.endsWith("_")) {
@@ -116,13 +114,13 @@ let _transformObjectStats = (input, fields) => {
 						fieldName = config.fortnite.LABEL_TO_FIELD[fieldName];
 					}
 					let itemValue = _cleanNumber(item.value);
-					if (_hasValue(filteredFields, fieldName) || (itemValue === 0 && _hasValue(fields, "*"))) {
+					if (utils.array.hasValue(filteredFields, fieldName) || (itemValue === 0 && utils.array.hasValue(fields, "*"))) {
 						continue;
 					}
 
 					if (
-						(_hasValue(fields, fieldName) || _hasValue(fields, "*")) &&
-						!_hasValue(added, fieldName) &&
+						(utils.array.hasValue(fields, fieldName) || utils.array.hasValue(fields, "*")) &&
+						!utils.array.hasValue(added, fieldName) &&
 						!fieldName.endsWith("_")
 					) {
 						added.push(fieldName);
@@ -135,12 +133,12 @@ let _transformObjectStats = (input, fields) => {
 					}
 					if (
 						item.percentile &&
-						!_hasValue(added, `${fieldName}_`) &&
+						!utils.array.hasValue(added, `${fieldName}_`) &&
 						!fieldName.endsWith("_") &&
-						(_hasValue(fields, `${fieldName}_`) || _hasValue(fields, "*"))
+						(utils.array.hasValue(fields, `${fieldName}_`) || utils.array.hasValue(fields, "*"))
 					) {
 						let fieldIndex = null;
-						if (_hasValue(fields, `${fieldName}_`)) {
+						if (utils.array.hasValue(fields, `${fieldName}_`)) {
 							for (let f = 0; f < data.length; ++f) {
 								if (data[f].field === fieldName) {
 									fieldIndex = f + 1;
@@ -158,7 +156,7 @@ let _transformObjectStats = (input, fields) => {
 					}
 				}
 			}
-			if (_hasValue(fields, "*")) {
+			if (utils.array.hasValue(fields, "*")) {
 				console.log("sort");
 				data.sort(function(a, b) {
 					if (a.field < b.field) {

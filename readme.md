@@ -213,6 +213,49 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 	- `top3_` : Top 3 %
 	- `wins` : Wins
 	- `wins_` : Wins %
+
+#### Rainbow 6: Seige
+
+- `/overlay/seige/{platform}/{username}/?[fields={field-list}]`
+
+##### PLATFORMS
+
+- `pc` : PC
+- `xbl`: XBOX
+- `psn`: PLAYSTATION
+
+##### FIELDS
+
+> `NOTE:` Progress Bars (Any of the `_` fields for percentages) are not currently enabled due to an issue with the progress bar rendering incorrectly.
+
+> Values that are `0` will not render, unless they are explicitly set in the fields parameter.
+
+This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
+
+- `*` : SPECIAL ALL FIELDS (Default)
+- `wins` : Wins
+- `wins_` : Wins %
+- `season_wins` : Season Wins
+- `season_losses` : Season Losses
+- `season` : Season
+- `losses` : Losses
+- `kills` : Kills
+- `deaths` : Deaths
+- `kd` : Kill / Death Ratio
+- `timeplayed` : Time Played
+- `ranked_wins` : Wins
+- `ranked_wins_` : Wins %
+- `ranked_wins` : Wins
+- `ranked_wins_` : Wins %
+- `ranked_losses` : Losses
+- `ranked_kills` : Kills
+- `ranked_deaths` : Deaths
+- `ranked_kd` : Kill / Death Ratio
+- `ranked_timeplayed` : Time Played
+- `level` : Progression Level
+- `xp` : Progression XP
+- `rank` : Rank
+
 ### ENVIRONMENT VARIABLES
 
 - `TN_POLL_DELAY` : Delay in seconds to poll for stats. (Default 60)
@@ -223,6 +266,7 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 #### PUBG
 - `TN_PUBG_API_KEY` : PUBG Tracker API Key [See documentation to create API Key](https://pubgtracker.com/site-api)
 
+#### Rainbow 6: Seige
 
 ---
 
