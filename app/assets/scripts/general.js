@@ -56,7 +56,7 @@ $(function() {
 					}
 					if (old.length === 1) {
 						$(old).off('mdl-componentupgraded');
-						target.remove(old);
+						old.remove();
 					}
 
 					target.append(template);

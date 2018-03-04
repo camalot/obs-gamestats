@@ -4,10 +4,10 @@ This provides OBS overlay of data from The Tracker Network and other sources
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ZZF3RAC2HASS)
 
-[![Sample](https://i.imgur.com/AO0rLon.png)](https://www.twitch.tv/thekrymzun)
+[![TheKrymzun](https://i.imgur.com/AO0rLon.png)](https://www.twitch.tv/thekrymzun)
 
 
-### LICENSE
+# LICENSE
 
 [Apache 2.0](https://github.com/camalot/obs-gamestats/blob/develop/LICENSE.md)
 
@@ -20,71 +20,11 @@ Markdown:
 [OBS-GAMESTATS](https://github.com/camalot/obs-gamestats) by [DarthMinos](https://www.twitch.tv/darthminos)
 ```
 
-### CUSTOMIZATION
-
-#### COLORS
-
-You can change the colors of the labels and values by using `query parameters`.
-
-- *Label*: `colors.label=red-400`
-- *Value*: `colors.value=red-400`
-
-Example:
-
-`/overlay/fortnite/pc/my-fn-user-name/solo?colors.label=red-400&colors.value=red-400`
-
-For a list of the colors that are supported, look at the color list [here](http://blog.jonathanargentiero.com/material-design-lite-color-classes-list/). The value after `.mdl-color--` is the value that is used.
-
-#### CSS CUSTOMIZATION
-
-OBS allows you to provide custom CSS with the browser source. Here are the CSS Selectors to use to customize it further.
-
-```css
-/* Stat label and value container */
-h3.info {
-
-}
-
-/* Stat Label */
-h3.info .label {
-	
-}
-
-/* Stat Value */
-h3.info .value {
-
-}
-```
-
-Here is an example of using a custom font for the labels and values:
-
-```css
-/* MAKE SURE THIS IS AT THE TOP OF THE CSS BOX */
-/* This will import a custom font from Google Fonts (https://fonts.google.com) */
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-
-/* this can be anywhere in the box */
-* {
-  font-family: 'Permanent Marker' !important;
-}
-```
-Unmodified Font
-
-![Unmodified Font](https://i.imgur.com/xc1kMWn.png)  
-
-Custom Font 
-
-![Custom Font](https://i.imgur.com/c0Behf7.png)
-
-
-
-### ENDPOINTS
+# OVERLAYS
 
 #### FORTNITE
 
 - `/overlay/fortnite/{platform}/{epic-name}/[mode]?[fields={field-list}]`
-
-![Sample](https://i.imgur.com/7ROVfYY.png)
 
 ##### PLATFORMS
 
@@ -256,6 +196,60 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 - `xp` : Progression XP
 - `rank` : Rank
 
+#### OVERWATCH
+
+- `/overlay/overwatch/{platform}/{username}/[region]?[fields={field-list}]`
+
+##### PLATFORMS
+
+- `pc` : PC
+- `xbl`: XBOX
+- `psn`: PLAYSTATION
+
+##### FIELDS
+
+> `NOTE:` Progress Bars (Any of the `_` fields for percentages) are not currently enabled due to an issue with the progress bar rendering incorrectly.
+
+> Values that are `0` will not render, unless they are explicitly set in the fields parameter.
+
+This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
+
+- `*` : SPECIAL ALL FIELDS (Default)
+- `total_wins` : Total Wins
+- `level` : Level
+- `prestige` : Prestige
+- `rating` : Rating
+- `wins` : Casual Wins
+- `damagedone` : Casual Damage Done Avg
+- `deaths` : Casual Deaths  Avg
+- `eliminations` : Casual Eliminations Avg
+- `finalblows` : Casual Final Blows Avg
+- `healingdone` : Casual Healing Done Avg
+- `objectivekills` : Casual Objective Kills Avg
+- `kills` : Casual Kills
+- `medals` : Casual Total Medals
+- `medals_bronze` : Casual Bronze Medals
+- `medals_silver` : Casual Silver Medals
+- `medals_gold` : Casual Gold Medals
+- `matches` : Casual Matches
+- `ranked_damagedone` : Ranked Damage Done Avg
+- `ranked_deaths` : Ranked Deaths  Avg
+- `ranked_eliminations` : Ranked Eliminations Avg
+- `ranked_finalblows` : Ranked Final Blows Avg
+- `ranked_healingdone` : Ranked Healing Done Avg
+- `ranked_objectivekills` : Ranked Objective Kills Avg
+- `ranked_kills` : Ranked Kills
+- `ranked_medals` : Ranked Total Medals
+- `ranked_medals_bronze` : Ranked Bronze Medals
+- `ranked_medals_silver` : Ranked Silver Medals
+- `ranked_medals_gold` : Ranked Gold Medals
+- `ranked_matches` : Ranked Matches
+- `ranked_wins` : Ranked Wins
+
+
+
+
+
 ### ENVIRONMENT VARIABLES
 
 - `TN_POLL_DELAY` : Delay in seconds to poll for stats. (Default 60)
@@ -267,8 +261,68 @@ This should be a comma (`,`), pipe (`|`), or semi-colon (`;`), separated list
 - `TN_PUBG_API_KEY` : PUBG Tracker API Key [See documentation to create API Key](https://pubgtracker.com/site-api)
 
 #### Rainbow 6: Seige
+- N/A
 
----
+#### OVERWATCH
+- N/A
+
+
+# CUSTOMIZATION
+
+#### COLORS
+
+You can change the colors of the labels and values by using `query parameters`.
+
+- *Label*: `colors.label=red-400`
+- *Value*: `colors.value=red-400`
+
+Example:
+
+`/overlay/fortnite/pc/my-fn-user-name/solo?colors.label=red-400&colors.value=red-400`
+
+For a list of the colors that are supported, look at the color list [here](http://blog.jonathanargentiero.com/material-design-lite-color-classes-list/). The value after `.mdl-color--` is the value that is used.
+
+#### CSS CUSTOMIZATION
+
+OBS allows you to provide custom CSS with the browser source. Here are the CSS Selectors to use to customize it further.
+
+```css
+/* Stat label and value container */
+h3.info {
+
+}
+
+/* Stat Label */
+h3.info .label {
+	
+}
+
+/* Stat Value */
+h3.info .value {
+
+}
+```
+
+Here is an example of using a custom font for the labels and values:
+
+```css
+/* MAKE SURE THIS IS AT THE TOP OF THE CSS BOX */
+/* This will import a custom font from Google Fonts (https://fonts.google.com) */
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+/* this can be anywhere in the box */
+* {
+  font-family: 'Permanent Marker' !important;
+}
+```
+Unmodified Font
+
+![Unmodified Font](https://i.imgur.com/xc1kMWn.png)  
+
+Custom Font 
+
+![Custom Font](https://i.imgur.com/c0Behf7.png)
+# DEPLOYMENT
 
 ### RUN IN HEROKU
 

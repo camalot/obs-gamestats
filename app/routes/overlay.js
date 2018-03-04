@@ -38,5 +38,20 @@ router.get("/seige/:platform/:username/", (req, res, next) => {
 	});
 });
 
+router.get("/overwatch/:platform/:username/:region?", (req, res, next) => {
+	let loader = "general";
+	res.render("game", {
+		loader: loader,
+		args: {
+			platform: req.params.platform,
+			username: req.params.username,
+			region: req.params.region || "us",
+			fields: req.query["fields"],
+			poll: config.seige.POLL_DELAY,
+			mode: "",
+			game: "overwatch"
+		}
+	});
+});
 
 module.exports = router;
