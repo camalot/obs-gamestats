@@ -33,10 +33,10 @@ env:
 
 globals:
   Promise: true
-  dialogPolyfill: true
-  moment: true
+  dialogPolyfill: false
+  componentHandler: false
   document: true
-  # e.g. angular: true
+  moment: false
 
 plugins: [
 ]

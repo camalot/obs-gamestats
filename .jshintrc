@@ -78,6 +78,7 @@
 
 	"globals": {
 		"dialogPolyfill": true,
-		"moment": true
+		"moment": true,
+		"componentHandler": true
 	}
 }
